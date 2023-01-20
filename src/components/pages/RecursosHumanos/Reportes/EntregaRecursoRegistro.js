@@ -37,6 +37,7 @@ const Success = ({ data }) => {
         <thead>
           <tr>
             <th className="border px-2">Empleado</th>
+            <th className="border px-2">Tipo de entrada</th>
             <th className="border px-2">Fecha</th>
             <th className="border px-2">Recurso</th>
             <th className="border px-2">Cantidad</th>
@@ -48,6 +49,7 @@ const Success = ({ data }) => {
               <td className="border px-2 fw-semibold">
                 {el.nombre} {el.apellido_paterno} {el.apellido_materno}
               </td>
+              <td className="border px-2 fw-semibold"></td>
               <td className="border px-2 fw-semibold">
                 {format.formatFechaComplete(el.fecha)}
               </td>

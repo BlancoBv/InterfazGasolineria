@@ -26,6 +26,20 @@ const FormEntregaRecurso = ({ enviar, handle, formPending, body, setBody }) => {
               setData={setBody}
             />
           </div>
+
+          <div className="col-7">
+            <label className="form-label mb-0">Tipo de entrada</label>
+            <select
+              className="form-select"
+              onChange={handle}
+              id="entradas"
+              required
+            >
+              <option value="">Tipo de entradas</option>
+              <option value={1}>Entrega</option>
+              <option value={2}>Recibe</option>
+            </select>
+          </div>
         </div>
         <div className="row">
           <div className="col-12">
