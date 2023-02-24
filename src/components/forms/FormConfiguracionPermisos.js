@@ -17,8 +17,10 @@ function FormConfiguracionPemisos() {
   const [msgError, setMsgError] = useState(null);
   const [id, setId] = useState(user ? user.idchecador : null);
 
-  const { data, error, isPending } = useGetData(`/auth/permisos/${id}}`, id);
+  const { data, error, isPending } = useGetData(`/auth/permisos/${id}`, id);
   const usuarios = useGetData(`/auth/usuarios/${id}`, id);
+
+  console.log(data);
 
   const close = () => setModal(false);
 

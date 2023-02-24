@@ -203,11 +203,27 @@ const Success = ({ empleados }) => {
             <Grafica
               datos={dataBar}
               text="Gráfica semanal de monto faltante de despachador"
-              customObj={{
+              optionsCustom={{
                 scales: {
                   y: {
+                    title: {
+                      display: true,
+                      text: "Cantidad en pesos",
+                      font: {
+                        size: "20pt",
+                      },
+                    },
                     ticks: {
                       callback: (value) => `$${value}`,
+                    },
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: "Despachadores",
+                      font: {
+                        size: "20pt",
+                      },
                     },
                   },
                 },
