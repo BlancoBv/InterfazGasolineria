@@ -86,3 +86,7 @@ body {
 .btn-select:hover {
   background-color: #e4e4e4;
 }
+
+.minW-maxC {
+  min-width: max-content;
+}

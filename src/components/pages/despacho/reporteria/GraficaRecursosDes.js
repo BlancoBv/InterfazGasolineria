@@ -11,9 +11,10 @@ import IconComponents from "../../../assets/IconComponents";
 
 const GraficaRecursosDes = () => {
   const date = new Date();
+  const qna = date.getDate() > 15 ? 2 : 1;
   const [year, setYear] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth() + 1);
-  const [quincena, setQuincena] = useState(1);
+  const [quincena, setQuincena] = useState(qna);
   //const despachador = useGetData("/empleado?departamento=1");
   const recursos = useGetData(
     `/lista-recurso-despachador/empleados/${year}/${month}/${quincena}`
@@ -48,7 +49,7 @@ const GraficaRecursosDes = () => {
           <select
             className="form-select"
             onChange={handleQuincena}
-            defaultValue={1}
+            defaultValue={qna}
           >
             <option value="1">Primer Quincena</option>
             <option value="2">Segunda Quincena</option>
@@ -95,7 +96,7 @@ const Success = ({ recursos, year, month, quincena }) => {
     }
 
     let sumaPuntos = el.recursos
-      .map((re) => (re.evaluacion ? 1 : 0))
+      .map((re) => re.total)
       .reduce((a, b) => a + b, 0);
 
     return {
@@ -107,7 +108,11 @@ const Success = ({ recursos, year, month, quincena }) => {
   });
 
   let dataScale = {
-    labels: tableTotalPuntos.map((el) => el.nombre_completo),
+    labels: tableTotalPuntos.map((el) =>
+      tableTotalPuntos.length > 18
+        ? el.nombre_completo
+        : el.nombre_completo.split(" ")
+    ),
     datasets: [
       {
         data: tableTotalPuntos.map((el) => el.cantidad),
@@ -154,8 +159,8 @@ const Success = ({ recursos, year, month, quincena }) => {
                         key={re.idrecurso_despachador}
                         className="fw-bold border"
                       >
-                        {re.evaluacion ? (
-                          <span className="text-success">1</span>
+                        {re.total ? (
+                          <span className="text-success">{re.total}</span>
                         ) : (
                           <span className="text-danger">0</span>
                         )}
@@ -201,7 +206,7 @@ const Success = ({ recursos, year, month, quincena }) => {
                 </tbody>
               </table>
             </div>
-            <div className="w-75 mx-auto">
+            <div className="overflow-auto">
               <Scale
                 data={dataScale}
                 text="Gráfica mensual recursos despachador"
