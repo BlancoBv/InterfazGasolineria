@@ -50,6 +50,7 @@ const Success = ({ data }) => {
                 {el.nombre} {el.apellido_paterno} {el.apellido_materno}
               </td>
               <td className="border px-2 fw-semibold">{el.tipo_recibo}</td>
+              <td className="border px-2 fw-semibold"></td>
               <td className="border px-2 fw-semibold">
                 {format.formatFechaComplete(el.fecha)}
               </td>

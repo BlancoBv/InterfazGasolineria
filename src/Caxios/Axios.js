@@ -7,5 +7,5 @@ export default Axios.create({
     "Content-Type": "application/json",
     Authorization: token,
   },
-  baseURL: "http://192.168.10.20:4000/api",
+  baseURL: "http://127.0.0.1:4000/api",
 });

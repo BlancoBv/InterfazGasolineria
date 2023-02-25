@@ -27,6 +27,7 @@ const FormEntregaRecurso = ({ enviar, handle, formPending, body, setBody }) => {
             />
           </div>
           {/* Tipo de entrada */}
+
           <div className="col-7">
             <label className="form-label mb-0">Tipo de entrada</label>
             <select
